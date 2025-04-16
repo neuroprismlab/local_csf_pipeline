@@ -81,7 +81,16 @@ The Jupyter Notebook `example_pipeline_demo.ipynb` provides a step-by-step examp
 
 ---
 ## Output directory structure
-output/ ├── 1.proc_roi/ # Resampled ROI masks ├── 2.thresh_roi/ # Thresholded binary ROI masks ├── 3.dilated_roi/ # Dilated ROI masks ├── 4.local_csf_mask/ # Extracted local CSF masks ├── 5.local_csf_ts/ # Local CSF time series ├── 6.mod_confounds/ # Confounds with CSF appended └── 7.corrected_ts/ # Final denoised ROI time series
+```
+output/
+├── 1.proc_roi/         # Resampled ROI masks
+├── 2.thresh_roi/       # Thresholded binary ROI masks
+├── 3.dilated_roi/      # Dilated ROI masks
+├── 4.local_csf_mask/   # Extracted local CSF masks
+├── 5.local_csf_ts/     # Local CSF time series
+├── 6.mod_confounds/    # Confounds with CSF appended
+└── 7.corrected_ts/     # Final denoised ROI time series
+```
 
 ---
 ## Dependencies
