@@ -12,6 +12,9 @@ Subcortical regions are vulnerable to noise due to low signal-to-noise ratio (SN
 
 To overcome these challenges, this pipeline introduces a localized CSF correction strategy that is region-specific, extracting and modeling CSF signals found directly adjacent to each subcortical ROI.
 
+> For an overview of initial findings and methodological validation, see [supporting material](images/CNS_poster_2025.jpeg).
+
+
 ---
 ## Repository Structure
 ```
@@ -110,8 +113,10 @@ pip install -r requirements.txt
 While the code is resolution-independent, results may vary depending on voxel size and temporal resolution.
 
 ---
-## License 
-This project is licensed under the terms of the MIT License. This means you can freely use, modify, and distribute the code, as long as you provide attribution to the original authors and source.
+## About 
+This pipeline was developed by Alexandra Fischbach.
+
+For questions, feedback, or collaboration inquiries: 📧 fischbach.a@northeastern.edu
 
 ---
 ## References 
@@ -119,16 +124,15 @@ This project is licensed under the terms of the MIT License. This means you can 
 
 [2] Sclocco, R., Beissner, F., Bianciardi, M., Polimeni, J. R., & Napadow, V. (2018). Challenges and opportunities for brainstem neuroimaging with ultrahigh field MRI. NeuroImage, 168, 412–426. https://doi.org/10.1016/j.neuroimage.2017.02.052
 
+## Citation 
 ---
-## About 
-This pipeline was developed by Alexandra Fischbach.
-
-For questions, feedback, or collaboration inquiries: 📧 fischbach.a@northeastern.edu
-
----
-### Citation 
 If you use this pipeline in your work, please cite:
 
 Fischbach, A.K., Noble, S. (2025). *Local CSF Correction Pipeline for fMRI* [Computer software]. GitHub. https://github.com/AlexFischbach/local_csf_pipeline. Retrieved *[Month Day, Year]*.
 > Replace *[Month Day, Year]* with the date you accessed the repository.
+
+---
+## License 
+This project is licensed under the terms of the MIT License. This means you can freely use, modify, and distribute the code, as long as you provide attribution to the original authors and source.
+
 
