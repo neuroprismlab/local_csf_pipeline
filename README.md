@@ -79,6 +79,61 @@ Each step in the pipeline is handled by a modular function located in the `/util
 
 > See the example notebook `example_pipeline_demo.ipynb` for a step-by-step walkthrough.
 ---
+## Output File by Function
+
+```
+step_1: process_roi_mask()
+INPUT:
+    ├── ROI mask                     # 'R_amygdala.nii.gz'
+    ├── Template                     # 'mni_icbm152_t1_tal_nlin_asym_09c.nii.gz'
+OUTPUT:
+    ├── Resampled ROI mask           # 'sub-001_R_amygdala_mask_proc.nii.gz'
+
+step_2: threshold_roi_mask()
+INPUT:
+    ├── Resampled ROI mask
+OUTPUT:
+    ├── Binary ROI mask              # 'sub-001_R_amygdala_mask_binary.nii.gz'
+
+step_3: dilate_binary_roi_mask()
+INPUT:
+    ├── Binary ROI mask
+OUTPUT:
+    ├── Dilated ROI masK              # 'sub-001_R_amygdala_mask_dilated.nii.gz'
+
+step_4: extract_local_csf_mask()
+INPUT:
+    ├── Binary ROI mask
+    ├── Dilated ROI mask
+    ├── CSF tissue mask               # 'sub-001_T1w_space-MNI152NLin2009cAsym_class-CSF_probtissue.nii.gz'
+OUTPUT:
+    ├── Local CSF mask                # 'sub-001_R_amygdala_local_csf_mask.nii.gz'
+
+step_5: extract_local_csf_time_series()
+INPUT:
+    ├── Local CSF mask
+    ├── Functional BOLD image          # 'sub-001_task-rest_run-01_bold_space-MNI152NLin2009cAsym_preproc.nii.gz'
+OUTPUT:
+    ├── Local CSF timeseries           # 'sub-001_task-rest_run-01_R_amygdala_local_csf_ts.csv'
+
+step_6: add_local_csf_time_series_to_confound_file()
+INPUT:
+    ├── Confound file                  # 'sub-001_task-rest_run-01_bold_confounds.tsv'
+    ├── Local CSF timeseries
+OUTPUT:
+    ├── Modified confound file         # 'sub-001_task-rest_run-01_bold_confounds_mod.tsv'
+
+step_7: compute_functional_timeseries()
+INPUT:
+    ├── Functional BOLD image
+    ├── Binary ROI mask
+    ├── Modified confound file
+OUTPUT:
+└── ROI corrected timeseries            # 'sub-001_task-rest_run-01_R_amygdala_corrected_ts.csv'
+
+```
+
+---
 ## Output Directory Structure
 Each subfolder corresponds to a step in the pipeline.
 ```
@@ -90,6 +145,7 @@ output/
 ├── 5.local_csf_ts/     # Local CSF time series
 ├── 6.mod_confounds/    # Confounds with CSF appended
 └── 7.corrected_ts/     # Final denoised ROI time series
+
 ```
 ---
 ## Dependencies
