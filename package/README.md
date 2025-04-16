@@ -8,8 +8,18 @@ Subcortical regions are especially prone to distortion due to low signal-to-nois
 
 ---
 ## Project Structure
-project_root/ ├── `pipeline.py` # Main script to run the full pipeline ├── `config.py` # Paths, constants, and default variables ├── `requirements.txt` # Python dependencies ├── `README.md` # Project overview and usage └── utils/ # Utility functions grouped by functionality ├── `__init__.py` ├── `process_roi.py` # ROI loading, resampling, thresholding, dilation ├── `extract_csf.py` # Local CSF mask identification and time series extraction └── `timeseries.py` # Functional time series extraction and nuissance regression
-
+```
+local_csf_pipeline/
+├── pipeline.py             # Main script to run the full pipeline
+├── config.py               # Paths, constants, and default variables
+├── requirements.txt        # Python dependencies
+├── README.md               # Project overview and usage
+└── utils/                  # Utility functions grouped by functionality
+    ├── __init__.py
+    ├── roi_processing.py   # ROI loading, resampling, thresholding, dilation
+    ├── csf.py              # Local CSF mask extraction and time series
+    └── timeseries.py       # Functional time series extraction and regression
+```
 --- 
 ## Input requirements
 This pipeline works on processed fMRI data (fMRIprep) only.
@@ -77,11 +87,11 @@ output/ ├── 1.proc_roi/ # Resampled ROI masks ├── 2.thresh_roi/ # Th
 ## Dependencies
 Python packages listed in `requirements.txt`:
 
-- 'numpy==2.0.2'
-- 'pandas==2.2.3'
-- 'nibabel==5.3.2'
-- 'nilearn==0.10.4'
-- 'scipy==1.13.1'
+- `numpy==2.0.2`
+- `pandas==2.2.3`
+- `nibabel==5.3.2`
+- `nilearn==0.10.4`
+- `scipy==1.13.1`
 
 To install the required packages:
 ```bash
@@ -108,5 +118,3 @@ If you use this pipeline in your work, please cite:
 
 Fischbach, A.K. (2025). *Local CSF Correction Pipeline for fMRI* [Computer software]. GitHub. https://github.com/AlexFischbach/local_csf_pipeline. Retrieved *[Month Day, Year]*.
 > Replace *[Month Day, Year]* with the date you accessed the repository.
-
--
