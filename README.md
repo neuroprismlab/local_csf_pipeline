@@ -2,6 +2,9 @@
 
 A modular pipeline for correcting CSF-related artifacts in subcortical fMRI to improve signal sensitivity and reduce physiological confounds in ultra-high field (7T) imaging.
 
+
+![Pipeline diagram](images/pipeline_summary.png)
+
 ---
 ## Purpose
 
@@ -128,9 +131,4 @@ If you use this pipeline in your work, please cite:
 
 Fischbach, A.K., Noble, S. (2025). *Local CSF Correction Pipeline for fMRI* [Computer software]. GitHub. https://github.com/AlexFischbach/local_csf_pipeline. Retrieved *[Month Day, Year]*.
 > Replace *[Month Day, Year]* with the date you accessed the repository.
-
-
-## Workflow Summary
-
-![Pipeline diagram](images/local_csf_pipeline.png)
 
