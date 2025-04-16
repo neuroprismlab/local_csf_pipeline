@@ -1,0 +1,8 @@
+os
+numpy==2.0.2
+pandas==2.2.3
+nibabel==5.3.2
+nilearn==0.10.4
+scipy==1.13.1
+
+
