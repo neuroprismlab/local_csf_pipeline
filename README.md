@@ -36,19 +36,19 @@ This pipeline is designed to be used with preprocessed fMRI data (e.g., from [fM
 To run the pipeline, you will need the following inputs:
 
 - **Preprocessed BOLD images** (NifTI)
-    > `sub-001_task-rest_run-01_bold_space-MNI152NLin2009cAsym_preproc.nii.gz`
+    > example: `'sub-001_task-rest_run-01_bold_space-MNI152NLin2009cAsym_preproc.nii.gz'`
 
 - **Confound files** (TSV) 
-    > `sub-001_task-rest_run-01_bold_confounds.tsv`
+    > example: `'sub-001_task-rest_run-01_bold_confounds.tsv'`
 
 - **CSF probability tissue masks** (NifTI)
-    > `sub-001_T1w_space-MNI152NLin2009cAsym_class-CSF_probtissue.nii.gz`
+    > example: `'sub-001_T1w_space-MNI152NLin2009cAsym_class-CSF_probtissue.nii.gz'`
 
 - **MNI template** (NifTI)
-    > `mni_icbm152_t1_tal_nlin_asym_09c.nii.gz`
+    > example: `'mni_icbm152_t1_tal_nlin_asym_09c.nii.gz'`
 
 - **ROI masks**
-  >(e.g., [Harvard-Oxford Atlas](https://nilearn.github.io/dev/modules/description/harvard_oxford.html/))
+  > example: [Harvard-Oxford Atlas](https://nilearn.github.io/dev/modules/description/harvard_oxford.html/)
 ---
 ## Configuration 
 Edit `config.py` to customize:
@@ -113,10 +113,14 @@ pip install -r requirements.txt
 While the code is resolution-independent, results may vary depending on voxel size and temporal resolution.
 
 ---
-## About 
-This pipeline was developed by Alexandra Fischbach.
+## About the Developer  
+This pipeline was developed by **Alexandra Fischbach** in the Neuroscience Precision Research & Idiographic Statistical Methods [(NeuroPRISM)](https://neuroprismlab.github.io/) Lab at Northeastern University, under the mentorship of Dr. Stephanie Noble.
 
-For questions, feedback, or collaboration inquiries: 📧 fischbach.a@northeastern.edu
+For questions, feedback, or collaboration inquiries: fischbach.a@northeastern.edu
+
+<div style="position: absolute; top: 4px; right: 4px;">
+  <img src="images/NeuroPRISM_logo_light.png" alt="NeuroPRISM Lab Logo" width="90">
+</div>
 
 ---
 ## References 
@@ -129,10 +133,8 @@ For questions, feedback, or collaboration inquiries: 📧 fischbach.a@northeaste
 If you use this pipeline in your work, please cite:
 
 Fischbach, A.K., Noble, S. (2025). *Local CSF Correction Pipeline for fMRI* [Computer software]. GitHub. https://github.com/AlexFischbach/local_csf_pipeline. Retrieved *[Month Day, Year]*.
-> Replace *[Month Day, Year]* with the date you accessed the repository.
+> Note: replace *[Month Day, Year]* with the date you accessed the repository.
 
 ---
 ## License 
 This project is licensed under the terms of the MIT License. This means you can freely use, modify, and distribute the code, as long as you provide attribution to the original authors and source.
-
-
