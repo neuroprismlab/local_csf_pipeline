@@ -10,7 +10,7 @@ Subcortical regions are vulnerable to noise due to low signal-to-noise ratio (SN
 To overcome these challenges, this pipeline introduces a localized CSF correction strategy that is region-specific, extracting and modeling CSF signals found directly adjacent to each subcortical ROI.
 
 ---
-## Repository structure
+## Repository Structure
 ```
 local_csf_pipeline/
 ├── pipeline.py             # Main script to run the full pipeline
@@ -23,14 +23,8 @@ local_csf_pipeline/
     ├── extract_csf.py      # Local CSF mask extraction and time series
     └── func_timeseries.py  # Functional time series extraction and regression
 ```
-----
-## Data Notes
-> *Note: The pipeline was developed and tested on preprocessed 7T fMRI data acquired at* **1.1 mm isotropic resolution** *with a* **TR of 2.34 seconds** *.*
-
-While the code is resolution-independent, results may vary based on voxel size and temporal resolution.
-
 --- 
-## Input requirements
+## Input Requirements
 This pipeline is designed to be used with preprocessed fMRI data (e.g., from [fMRIPrep](https://fmriprep.org/)).
 
 To run the pipeline, you will need the following inputs:
@@ -60,7 +54,7 @@ Edit `config.py` to customize:
 - `CONDITION` *(optional)*: Scan label (e.g., `'rest'`)  
 - `DEFAULT_MOTION_CONFOUNDS` *(optional)*: Motion regressors used in nuisance regression
 ---
-## Modules overview
+## Modules Overview
 Each step in the pipeline is handled by a modular function located in the `/utils` folder.
 
 ### ROI Processing (`process_roi.py`)
@@ -79,7 +73,7 @@ Each step in the pipeline is handled by a modular function located in the `/util
 
 > See the example notebook `example_pipeline_demo.ipynb` for a step-by-step walkthrough.
 ---
-## Output directory structure
+## Output Directory Structure
 Each subfolder corresponds to a step in the pipeline.
 ```
 output/
@@ -105,6 +99,13 @@ To install the required packages:
 ```bash
 pip install -r requirements.txt
 ```
+---
+## Data Notes
+> *Note: The pipeline was developed and tested on preprocessed 7T fMRI data acquired at* **1.1 mm isotropic resolution** *with a* **TR of 2.34 seconds** *.*
+> For details on the MRI acquisition protocol, see [Fischbach et al., 2024](https://www.jneurosci.org/content/44/26/e1757232024/tab-article-info).
+
+While the code is resolution-independent, results may vary depending on voxel size and temporal resolution.
+
 ---
 ## License 
 This project is licensed under the terms of the MIT License. This means you can freely use, modify, and distribute the code, as long as you provide attribution to the original authors and source.
