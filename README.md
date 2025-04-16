@@ -128,3 +128,9 @@ If you use this pipeline in your work, please cite:
 
 Fischbach, A.K., Noble, S. (2025). *Local CSF Correction Pipeline for fMRI* [Computer software]. GitHub. https://github.com/AlexFischbach/local_csf_pipeline. Retrieved *[Month Day, Year]*.
 > Replace *[Month Day, Year]* with the date you accessed the repository.
+
+
+## Workflow Summary
+
+![Pipeline diagram](images/local_csf_pipeline.png)
+
