@@ -1,0 +1,31 @@
+# (http://citation-file-format.github.io/).
+  
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: Fischbach
+  given-names: Alexandra
+  affiliation: Northeastern University
+  orcid: https://orcid.org/0000-0002-7927-9176
+- family-names: Noble
+  given-names: Stephanie
+  affiliation: Northeastern University
+  orcid: https://orcid.org/0000-0002-4804-5553
+title: local_csf_pipeline
+version: 1.0.0
+doi: 10.5281/zenodo.1234
+date-released: 2025-04-16
+license: MIT
+type: software
+url: https://github.com/AlexFischbach/local_csf_pipeline
+keywords:
+  - fMRI
+  - Neuroimaging
+  - Artifact Correction
+  - Python
+
+abstract: 
+  This software package provides a modular pipeline for localized cerebrospinal fluid (CSF)
+  correction in high-resolution fMRI data. It was developed and validated on 7T resting-state 
+  and task-based fMRI datasets and is designed to improve signal quality in subcortical 
+  regions by regressing out region-specific physiological noise.
