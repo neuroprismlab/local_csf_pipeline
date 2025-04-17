@@ -1,5 +1,6 @@
 # Local CSF Correction Pipeline for fMRI
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15236635.svg)](https://doi.org/10.5281/zenodo.15236635)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15236635.svg)](https://doi.org/10.5281/zenodo.15236635) ![Python Version](https://img.shields.io/badge/python-3.8%2B-purple) [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT) ![status](https://img.shields.io/badge/status-active-brightgreen) 
+
 
 A modular pipeline for correcting CSF-related artifacts in subcortical fMRI to improve signal sensitivity and reduce physiological confounds in ultra-high field (7T) imaging.
 
