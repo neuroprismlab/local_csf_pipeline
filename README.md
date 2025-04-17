@@ -154,6 +154,7 @@ Fischbach, A.K., & Noble, S. (2025). *Local CSF Correction Pipeline for fMRI* (V
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15236635.svg)](https://doi.org/10.5281/zenodo.15236635)
 
+> Note: For full citation metadata, see the [CITATION.cff](https://github.com/AlexFischbach/local_csf_pipeline/blob/main/CITATION.cff) file included in this repository.
 ---
 ## Contributions 
 - **Alexandra Fischbach, M.S., Ph.D. Candidate** <sup>1,2</sup> — Conceptualization, Method Development, Software Implementation, Documentation
