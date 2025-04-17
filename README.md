@@ -1,22 +1,17 @@
 # Local CSF Correction Pipeline for fMRI
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15236635.svg)](https://doi.org/10.5281/zenodo.15236635) ![Python Version](https://img.shields.io/badge/python-3.8%2B-purple) [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT) ![status](https://img.shields.io/badge/status-active-brightgreen) 
 
-
 A modular pipeline for correcting CSF-related artifacts in subcortical fMRI to improve signal sensitivity and reduce physiological confounds in ultra-high field (7T) imaging.
-
 
 ![Pipeline diagram](images/pipeline_summary.png)
 
 ---
 ## Purpose
-
 Subcortical regions are vulnerable to noise due to low signal-to-noise ratio (SNR), small size, and proximity to CSF <sup>[1, 2]</sup>. Standard CSF correction averages signals across anatomically distinct CSF compartments, which can miss region-specific noise and reduce sensitivity.
 
 To overcome these challenges, this pipeline introduces a localized CSF correction strategy that is region-specific, extracting and modeling CSF signals found directly adjacent to each subcortical ROI.
 
 > For an overview of initial findings and methodological validation, see [supporting material](images/CNS_poster_2025.jpeg).
-
-
 ---
 ## Repository Structure
 ```
@@ -97,7 +92,6 @@ The following table outlines the step-by-step input files and corresponding outp
 | 6    | `add_local_csf_time_series_to_confound_file()`  | `extract_csf.py`    | <ul><li>Confound file (`sub-*_bold_confounds.tsv`)</li><li>Local CSF time series</li></ul>                                       | <ul><li>Modified confound file (`sub-*_bold_confounds_mod.tsv`)</li></ul>                         |
 | 7    | `compute_functional_timeseries()`               | `func_timeseries.py`| <ul><li>Functional BOLD image</li><li>Binary ROI mask</li><li>Modified confound file</li></ul>                                | <ul><li>ROI-corrected time series (`sub-*_R_amygdala_corrected_ts.csv`)</li></ul> |
 
-
 ---
 ## Output Directory Structure
 Each subfolder corresponds to a step in the pipeline.
@@ -115,7 +109,6 @@ output/
 ---
 ## Dependencies
 The pipeline requires the following Python packages (see `requirements.txt`):
-
 - `numpy==2.0.2`
 - `pandas==2.2.3`
 - `nibabel==5.3.2`
@@ -158,9 +151,11 @@ Fischbach, A.K., & Noble, S. (2025). *Local CSF Correction Pipeline for fMRI* (V
 > Note: For full citation metadata, see the [CITATION.cff](https://github.com/AlexFischbach/local_csf_pipeline/blob/main/CITATION.cff) file included in this repository.
 ---
 ## Contributions 
-- **Alexandra Fischbach, M.S., Ph.D. Candidate** <sup>1,2</sup> — Conceptualization, Method Development, Software Implementation, Documentation
+- **Alexandra Fischbach**, M.S., Ph.D. Candidate <sup>1,2</sup>
+    - Conceptualization, Method Development, Software Implementation, Documentation
 
-- **Stephanie Noble, Ph.D.** <sup>1,2,3</sup> — Project Supervision, Conceptual Guidance, Methodological Oversight
+- **Stephanie Noble**, Ph.D. <sup>1,2,3</sup>
+    - Project Supervision, Conceptual Guidance, Methodological Oversight
 
 <sub><sup>[1]</sup>Department of Psychology, Northeastern University
 
@@ -170,9 +165,9 @@ Fischbach, A.K., & Noble, S. (2025). *Local CSF Correction Pipeline for fMRI* (V
 
 ---
 ## About the Developer  
-This pipeline was developed by **Alexandra Fischbach**, a 5th year Ph.D Candidate (expected Fall 2025), in the *Neuroscience Precision Research & Idiographic Statistical Methods* [(NeuroPRISM)](https://neuroprismlab.github.io/) Lab at Northeastern University, under the mentorship of **Dr. Stephanie Noble**.
+This pipeline was developed by **Alexandra Fischbach**, a 5th year Ph.D Candidate (expected Fall 2025), in the *Neuroscience Precision Research & Idiographic Statistical Methods* [(NeuroPRISM)](https://neuroprismlab.github.io/) Lab at Northeastern University, under the mentorship of **Stephanie Noble**.
 
-For questions, feedback, or collaboration inquiries: fischbach.a@northeastern.edu
+For questions, feedback, opportunities, or collaboration inquiries: fischbach.a@northeastern.edu
 
 <div style="position: absolute; top: 4px; right: 4px;">
   <img src="images/NeuroPRISM_logo_light.png" alt="NeuroPRISM Lab Logo" width="90">
