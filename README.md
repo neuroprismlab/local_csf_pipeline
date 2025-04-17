@@ -50,7 +50,7 @@ To run the pipeline, you will need the following inputs:
     > Ex: `'mni_icbm152_t1_tal_nlin_asym_09c.nii.gz'`
 
 - **ROI masks**
-    > Ex: [Harvard-Oxford Atlas](https://nilearn.github.io/dev/modules/description/harvard_oxford.html/)
+    > Ex: [Harvard-Oxford Atlas](https://ftp.nmr.mgh.harvard.edu/pub/dist/freesurfer/tutorial_packages/centos6/fsl_507/doc/wiki/Atlases.html)
 ---
 ## Configuration 
 Edit `config.py` to customize:
