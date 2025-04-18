@@ -1,3 +1,11 @@
+'''
+Author: Alexandra Fischbach
+Github repo: https://github.com/AlexFischbach/local_csf_pipeline/tree/main
+Date: 04-18-2025
+Contact: fischbach.a@northeastern.edu
+'''
+
+
 def initialize_roi_dict(
         roi_dir, subj
 ):
@@ -55,7 +63,6 @@ def initialize_roi_dict(
 
 def process_roi_mask(
     roi_path,
-    roi_name,
     template_path,
     save_path=None,
     verbose=True
@@ -118,7 +125,7 @@ def process_roi_mask(
         # -----------------------------------------------------
         if roi_nii.shape != template_nii.shape:
             if verbose: 
-                print(f"Resampling ROI: <{roi_name}> to match template shape: {template_nii.shape}.")
+                print(f"Resampling ROI to match template shape: {template_nii.shape}.")
             is_binary = np.all(np.logical_or(roi_np == 0, roi_np == 1)) # Determine if ROI is binary or probabilistic to set interpolation method
             interp_method = 'nearest' if is_binary else 'linear'
             processed_roi_nii = resample_img(                           # Resample the ROI image to the template's space
@@ -148,7 +155,7 @@ def process_roi_mask(
     return processed_roi_nii
 
 def threshold_roi_mask(
-        processed_roi_path,
+        proc_roi_path,
         roi_threshold=0.6,
         save_path=None,
         verbose=True
@@ -158,7 +165,7 @@ def threshold_roi_mask(
 
     Input Parameters
     ----------------
-    processed_roi_path : str
+    proc_roi_path : str
         Full path to the processed ROI mask.
         (e.g., 'your/path/R_amygdala_mask_proc.nii.gz')
        
@@ -187,12 +194,12 @@ def threshold_roi_mask(
     import numpy as np
     import nibabel as nib
     
-    if processed_roi_path is None:
+    if proc_roi_path is None:
         raise ValueError("Input ROI path is None.")
     if roi_threshold < 0 or roi_threshold > 1:
         raise ValueError("Threshold value must be between 0 and 1.")
 
-    processed_roi_nii = nib.load(processed_roi_path) 
+    processed_roi_nii = nib.load(proc_roi_path) 
     processed_roi_np = processed_roi_nii.get_fdata() 
         
     # Determine whether thresholding is necessary for ROI mask 
@@ -231,7 +238,7 @@ def threshold_roi_mask(
     return binary_roi_nii
 
 def dilate_binary_roi_mask(
-    binary_roi_path, 
+    threshold_roi_path, 
     iterations=4,
     save_path=None,
     verbose=True,
@@ -241,7 +248,7 @@ def dilate_binary_roi_mask(
 
     Input Parameters
     ----------------
-    binary_roi_path : str
+    threshold_roi_path : str
         Full path to the input binary ROI mask (NIfTI format). Values must be 0 or 1.
         (e.g, '/your/output/PAG_mask_binary.nii.gz')
 
@@ -273,9 +280,9 @@ def dilate_binary_roi_mask(
     import nibabel as nib 
     from scipy.ndimage import binary_dilation # For binary dilation
 
-    if binary_roi_path is None:
+    if threshold_roi_path is None:
         raise ValueError("Input binary mask path is None.")
-    binary_roi_nii = nib.load(binary_roi_path) 
+    binary_roi_nii = nib.load(threshold_roi_path) 
     binary_roi_np = binary_roi_nii.get_fdata()
     
     # Validate the input (ROI mask) is binary
