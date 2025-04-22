@@ -104,7 +104,7 @@ add_local_csf_time_series_to_confound_file(
     save_path = mod_conf_path
 )
 
-# -------------------- STEP 7: Compute Denoised ROI Time Series --
+#-------------------- STEP 7: Compute Denoised ROI Time Series --
 corrected_ts_path = os.path.join(out_dir, f"{subj_id}_{roi}_corrected_ts.csv")
 
 compute_timeseries(
@@ -116,4 +116,4 @@ compute_timeseries(
     save_path = corrected_ts_path
 )
 
-print(f"Pipeline completed. Outputs saved to {out_dir}")
+print(f"Pipeline completed. Outputs saved to {out_dir}")# 
