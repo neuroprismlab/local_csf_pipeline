@@ -5,7 +5,7 @@ Date: 04-18-2025
 Contact: fischbach.a@northeastern.edu
 '''
 
-def compute_functional_timeseries(
+def compute_timeseries(
     func_mask_path,
     threshold_roi_path,
     mod_conf_path,
