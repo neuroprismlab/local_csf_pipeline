@@ -7,9 +7,9 @@ A modular pipeline for correcting CSF-related artifacts in subcortical fMRI to i
 
 ---
 ## Purpose
-Subcortical regions are vulnerable to noise due to low signal-to-noise ratio (SNR), small size, and proximity to CSF <sup>[1, 2]</sup>. Standard CSF correction averages signals across anatomically distinct CSF compartments, which can miss region-specific noise and reduce sensitivity.
+Subcortical regions are vulnerable to noise due to low signal-to-noise ratio (SNR), small size, and proximity to cerebrospinal fluid (CSF) <sup>[1, 2]</sup>. Standard CSF correction averages signals across anatomically distinct CSF compartments, which can fail to capture region-specific noise and reduce sensitivity.
 
-To overcome these challenges, this pipeline introduces a localized CSF correction strategy that is region-specific, extracting and modeling CSF signals found directly adjacent to each subcortical ROI.
+To overcome these challenges, this pipeline introduces a localized CSF correction strategy that is region-specific, extracting and modeling CSF signals found directly adjacent to each subcortical region of interest (ROI).
 
 > For an overview of initial findings and methodological validation, see [supporting material](images/CNS_poster_2025.jpeg).
 ---
@@ -63,9 +63,12 @@ pip install -r requirements.txt
 Each step in the pipeline is handled by a modular function located in the `/utils` folder.
 
 ### ROI Processing (`process_roi.py`)
-- `initialize_roi_dict` – Creates a dictionary of available ROIs
 - `process_roi_mask` – Loads and resamples ROIs to MNI space
+  
+   > Note: This step can be skipped if the ROI is already in the same space as the functional data 
 - `threshold_roi_mask` – Binarizes probabilistic ROI masks
+  
+   > Note: This step can be skipped if the ROI is already binary 
 - `dilate_binary_roi_mask` – Expands binary ROIs outward to define a local search region
 
 ### CSF Extraction (`extract_csf.py`)
