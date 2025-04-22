@@ -17,7 +17,6 @@ To overcome these challenges, this pipeline introduces a localized CSF correctio
 ```
 local_csf_pipeline/
 ├── pipeline.py             # Main script to run the full pipeline
-├── config.py               # Paths, constants, and default variables
 ├── requirements.txt        # Python dependencies
 ├── README.md               # Project overview and usage
 └── utils/                  # Utility functions grouped by functionality
@@ -47,18 +46,18 @@ To run the pipeline, you will need the following inputs:
 - **ROI masks**
     > Ex: [Harvard-Oxford Atlas](https://ftp.nmr.mgh.harvard.edu/pub/dist/freesurfer/tutorial_packages/centos6/fsl_507/doc/wiki/Atlases.html)
 ---
-## Configuration 
-Edit `config.py` to customize:
-- `SUBJECT_ID`: Subject ID from the `SUBJ` environment variable  
-- `BASE_DIR`, `DATA_DIR`, `ROI_DIR`, `OUTPUT_DIR`: Path configuration  
-- `TEMPLATE_PATH`: MNI template for ROI resampling
-- `DEFAULT_ROIS`: ROIs to include in the pipeline  
-- `DEFAULT_REST_RUNS` *(optional)*: List of run labels
-    > Ex: `['run-01', 'run-02', 'run-03']`
-- `CONDITION` *(optional)*: Scan label
-    > Ex: `'rest'` 
-- `DEFAULT_MOTION_CONFOUNDS` *(optional)*: Motion regressors used in nuisance regression
-    > Ex: `['X', 'Y', 'Z', 'RotX', 'RotY', 'RotZ']`
+## Dependencies
+The pipeline requires the following Python packages (see `requirements.txt`):
+- `numpy==2.0.2`
+- `pandas==2.2.3`
+- `nibabel==5.3.2`
+- `nilearn==0.10.4`
+- `scipy==1.13.1`
+
+To install the required packages:
+```bash
+pip install -r requirements.txt
+```
 ---
 ## Modules Overview
 Each step in the pipeline is handled by a modular function located in the `/utils` folder.
@@ -93,7 +92,7 @@ The following table outlines the step-by-step input files and corresponding outp
 | 7    | `compute_functional_timeseries()`               | `func_timeseries.py`| <ul><li>Functional BOLD image</li><li>Binary ROI mask</li><li>Modified confound file</li></ul>                                | <ul><li>ROI-corrected time series (`sub-*_R_amygdala_corrected_ts.csv`)</li></ul> |
 
 ---
-## Output Directory Structure
+## Example Output Directory Structure
 Each subfolder corresponds to a step in the pipeline.
 ```
 output/
@@ -105,19 +104,6 @@ output/
 ├── 6.mod_confounds/    # Confounds with CSF appended
 └── 7.corrected_ts/     # Final denoised ROI time series
 
-```
----
-## Dependencies
-The pipeline requires the following Python packages (see `requirements.txt`):
-- `numpy==2.0.2`
-- `pandas==2.2.3`
-- `nibabel==5.3.2`
-- `nilearn==0.10.4`
-- `scipy==1.13.1`
-
-To install the required packages:
-```bash
-pip install -r requirements.txt
 ```
 ---
 ## Data Notes
