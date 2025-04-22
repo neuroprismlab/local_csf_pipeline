@@ -28,5 +28,5 @@ __all__ = [
     'add_local_csf_time_series_to_confound_file',
 
     # func_timeseries 
-    'compute_functional_timeseries',
+    'compute_timeseries',
 ]
