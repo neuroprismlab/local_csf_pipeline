@@ -16,15 +16,14 @@ To overcome these challenges, this pipeline introduces a localized CSF correctio
 ## Repository Structure
 ```
 local_csf_pipeline/
-├── pipeline.py             # Main script to run the full pipeline
-├── config.py               # Paths, constants, and default variables
-├── requirements.txt        # Python dependencies
-├── README.md               # Project overview and usage
-└── utils/                  # Utility functions grouped by functionality
+├── pipeline.py                # Main script to run the full pipeline
+├── requirements.txt           # Python dependencies
+├── README.md                  # Project overview and usage
+└── utils/                     # Utility functions grouped by functionality
     ├── __init__.py
-    ├── process_roi.py      # ROI loading, resampling, thresholding, dilation
-    ├── extract_csf.py      # Local CSF mask extraction and time series
-    └── func_timeseries.py  # Functional time series extraction and regression
+    ├── process_roi.py         # ROI loading, resampling, thresholding, dilation
+    ├── extract_csf.py         # Local CSF mask extraction and time series
+    └── compute_timeseries.py  # Functional time series extraction and regression
 ```
 --- 
 ## Input Requirements
@@ -47,18 +46,18 @@ To run the pipeline, you will need the following inputs:
 - **ROI masks**
     > Ex: [Harvard-Oxford Atlas](https://ftp.nmr.mgh.harvard.edu/pub/dist/freesurfer/tutorial_packages/centos6/fsl_507/doc/wiki/Atlases.html)
 ---
-## Configuration 
-Edit `config.py` to customize:
-- `SUBJECT_ID`: Subject ID from the `SUBJ` environment variable  
-- `BASE_DIR`, `DATA_DIR`, `ROI_DIR`, `OUTPUT_DIR`: Path configuration  
-- `TEMPLATE_PATH`: MNI template for ROI resampling
-- `DEFAULT_ROIS`: ROIs to include in the pipeline  
-- `DEFAULT_REST_RUNS` *(optional)*: List of run labels
-    > Ex: `['run-01', 'run-02', 'run-03']`
-- `CONDITION` *(optional)*: Scan label
-    > Ex: `'rest'` 
-- `DEFAULT_MOTION_CONFOUNDS` *(optional)*: Motion regressors used in nuisance regression
-    > Ex: `['X', 'Y', 'Z', 'RotX', 'RotY', 'RotZ']`
+## Dependencies
+The pipeline requires the following Python packages (see `requirements.txt`):
+- `numpy==2.0.2`
+- `pandas==2.2.3`
+- `nibabel==5.3.2`
+- `nilearn==0.10.4`
+- `scipy==1.13.1`
+
+To install the required packages:
+```bash
+pip install -r requirements.txt
+```
 ---
 ## Modules Overview
 Each step in the pipeline is handled by a modular function located in the `/utils` folder.
@@ -74,8 +73,8 @@ Each step in the pipeline is handled by a modular function located in the `/util
 - `extract_local_csf_time_series` – Extracts average local CSF time series from the functional image
 - `add_local_csf_time_series_to_confound_file` – Appends local CSF regressors to fMRIPrep confounds
 
-### Time Series Correction (`func_timeseries.py`)
-- `compute_functional_timeseries` – Applies nuisance regression and returns cleaned functional signals
+### Time Series Correction (`compute_timeseries.py`)
+- `compute_timeseries.py` – Applies nuisance regression and returns cleaned functional signals
 
 > See the example notebook `example_pipeline_demo.ipynb` for a step-by-step walkthrough.
 ---
@@ -90,10 +89,10 @@ The following table outlines the step-by-step input files and corresponding outp
 | 4    | `extract_local_csf_mask()`                      | `extract_csf.py`    | <ul><li>Binary ROI mask</li><li>Dilated ROI mask</li><li>CSF tissue mask (`sub-*_class-CSF_probtissue.nii.gz`)</li></ul>         | <ul><li>Local CSF mask (`sub-*_R_amygdala_local_csf_mask.nii.gz`)</li></ul>                 |
 | 5    | `extract_local_csf_time_series()`               | `extract_csf.py`    | <ul><li>Local CSF mask</li><li>Functional BOLD image (`sub-*_bold_space-MNI152NLin2009cAsym_preproc.nii.gz`)</li></ul>           | <ul><li>Local CSF time series (`sub-*_R_amygdala_local_csf_ts.csv`)</li></ul> |
 | 6    | `add_local_csf_time_series_to_confound_file()`  | `extract_csf.py`    | <ul><li>Confound file (`sub-*_bold_confounds.tsv`)</li><li>Local CSF time series</li></ul>                                       | <ul><li>Modified confound file (`sub-*_bold_confounds_mod.tsv`)</li></ul>                         |
-| 7    | `compute_functional_timeseries()`               | `func_timeseries.py`| <ul><li>Functional BOLD image</li><li>Binary ROI mask</li><li>Modified confound file</li></ul>                                | <ul><li>ROI-corrected time series (`sub-*_R_amygdala_corrected_ts.csv`)</li></ul> |
+| 7    | `compute_timeseries()`               | `compute_timeseries.py`| <ul><li>Functional BOLD image</li><li>Binary ROI mask</li><li>Modified confound file</li></ul>                                | <ul><li>ROI-corrected time series (`sub-*_R_amygdala_corrected_ts.csv`)</li></ul> |
 
 ---
-## Output Directory Structure
+## Example Output Directory Structure
 Each subfolder corresponds to a step in the pipeline.
 ```
 output/
@@ -105,19 +104,6 @@ output/
 ├── 6.mod_confounds/    # Confounds with CSF appended
 └── 7.corrected_ts/     # Final denoised ROI time series
 
-```
----
-## Dependencies
-The pipeline requires the following Python packages (see `requirements.txt`):
-- `numpy==2.0.2`
-- `pandas==2.2.3`
-- `nibabel==5.3.2`
-- `nilearn==0.10.4`
-- `scipy==1.13.1`
-
-To install the required packages:
-```bash
-pip install -r requirements.txt
 ```
 ---
 ## Data Notes
