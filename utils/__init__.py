@@ -11,8 +11,8 @@ from .extract_csf import (
     add_local_csf_time_series_to_confound_file,
 )
 
-from .func_timeseries import (
-    compute_functional_timeseries,
+from .compute_timeseries import (
+    compute_timeseries
 )
 
 __all__ = [
