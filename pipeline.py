@@ -41,7 +41,7 @@ from utils.extract_csf import (
     add_local_csf_time_series_to_confound_file,
 )
 
-from utils.func_timeseries import compute_functional_timeseries
+from utils.compute_timeseries import compute_timeseries
 
 # ----------------------------------------------------------------
 # PIPELINE EXECUTION
@@ -107,7 +107,7 @@ add_local_csf_time_series_to_confound_file(
 # -------------------- STEP 7: Compute Denoised ROI Time Series --
 corrected_ts_path = os.path.join(out_dir, f"{subj_id}_{roi}_corrected_ts.csv")
 
-compute_functional_timeseries(
+compute_timeseries(
     func_mask_path, 
     threshold_roi_path, 
     mod_conf_path, 
