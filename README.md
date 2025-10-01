@@ -149,13 +149,13 @@ Fischbach, A.K., & Noble, S. (2025). *Local CSF Correction Pipeline for fMRI* (V
 
 <sub><sup>[1]</sup>Department of Psychology, Northeastern University
 
-<sub><sup>[2]</sup>The Center for Cognitive and Brain Health, Northeastern University
+<sub><sup>[2]</sup>The Institute for Cognitive and Brain Health, Northeastern University
 
 <sub><sup>[3]</sup>Department of Bioengineering, Northeastern University
 
 ---
 ## About the Developer  
-This pipeline was developed by **Alexandra Fischbach**, a 5th year Ph.D Candidate (expected Fall 2025), in the *Neuroscience Precision Research & Idiographic Statistical Methods* [(NeuroPRISM)](https://neuroprismlab.github.io/) Lab at Northeastern University, under the mentorship of **Stephanie Noble**.
+This pipeline was developed by **Alexandra Fischbach**, a 6th year Ph.D Candidate (expected 2026), in the *Neuroscience Precision Research & Idiographic Statistical Methods* [(NeuroPRISM)](https://neuroprismlab.github.io/) Lab at Northeastern University, under the mentorship of **Stephanie Noble**.
 
 For questions, feedback, opportunities, or collaboration inquiries: fischbach.a@northeastern.edu
 
