@@ -156,7 +156,7 @@ def process_roi_mask(
 
 def threshold_roi_mask(
         proc_roi_path,
-        roi_threshold=0.6,
+        roi_threshold=0.3,
         save_path=None,
         verbose=True
 ):
@@ -172,7 +172,7 @@ def threshold_roi_mask(
 
     roi_threshold : float, optional
         Threshold for binarizing probabilistic masks. Values ≥ threshold are set to 1, else 0.
-        Default is 0.6. If the array has values in [0, 100], the threshold is scaled automatically.
+        Default is 0.3. If the array has values in [0, 100], the threshold is scaled automatically.
     
     save_path : str, optional
         Full path to save the thresholded binary mask as a NIfTI file.
