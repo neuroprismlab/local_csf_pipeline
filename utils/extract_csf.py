@@ -9,7 +9,7 @@ def extract_local_csf_mask(
     csf_mask_path,  
     threshold_roi_path,
     dilated_roi_path,
-    csf_threshold=0.6,
+    csf_threshold=0.8,
     save_path=None,
     verbose=True
 ):
@@ -32,7 +32,7 @@ def extract_local_csf_mask(
         (e.g., 'your/path/PAG_mask_dilated.nii.gz')
    
     csf_threshold : float, optional
-        Threshold to binarize the CSF probability map. Default is 0.6.
+        Threshold to binarize the CSF probability map. Default is 0.8.
         Thresholding is skipped if the CSF image is already binary.
     
     save_path : str, optional
